@@ -19,7 +19,7 @@ namespace Pokerrr
 
         private void MakingTable(int windowWidth, int windowHeight)
         {
-            for (var i = 0; i < windowWidth / 200; i++)
+            for (var i = 0; i <= windowWidth / 200; i++)
             {
                 PictureBox pic = new PictureBox();
                 pic.BackColor = Color.Black;
@@ -38,6 +38,20 @@ namespace Pokerrr
             }
         }
 
+        private void CreatingLabels(int windowWidth, List<Label> labels)
+        {
+            for (var j = 0; j < 22 + ((windowWidth / 200) * 2); j++)
+            {
+                for (var i = 0; i < windowWidth / 200; i++)
+                {
+                    Label label = new Label();
+                    label.Location = new Point(i * 200 + 5, j * 30 + 5);
+                    this.Controls.Add(label);
+                    labels.Add(label);
+                }
+            }
+        }
+
         private void PlayWindow_Load(object sender, EventArgs e)
         {
             MakingTable(this.Width, this.Height);
@@ -47,7 +61,18 @@ namespace Pokerrr
             button_step.Size = new Size(100, 30);
             button_step.Location = new Point(this.Width + 20, 50);
             this.Controls.Add(button_step);
+
+            List<Label> labels = new List<Label>();
+            CreatingLabels(this.Width, labels);
+
+
+
+
+
+
             this.Width += 180;
+            
+           
         }
 
     }
