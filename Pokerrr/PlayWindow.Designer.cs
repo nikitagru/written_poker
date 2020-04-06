@@ -36,7 +36,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.MaximizeBox = false;
             this.Name = "PlayWindow";
             this.Text = "PlayWindow";
             this.Load += new System.EventHandler(this.PlayWindow_Load);

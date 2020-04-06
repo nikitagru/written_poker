@@ -33,6 +33,7 @@ namespace Pokerrr
                 PlayWindow playWindow = new PlayWindow();
                 playWindow.Width = 200 * _numberOfPlayers;
                 playWindow.Height = (22 + (_numberOfPlayers * 2)) * 40;
+                
                 playWindow.Show();
             }
             catch
