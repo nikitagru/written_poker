@@ -14,6 +14,7 @@ namespace Pokerrr
     {
         List<Label> labels = new List<Label>();
         List<TextBox> playersTextbox = new List<TextBox>();
+        List<CheckBox> darkCheck = new List<CheckBox>();
 
         public PlayWindow()
         {
@@ -58,7 +59,7 @@ namespace Pokerrr
             }
         }
 
-        private void MakingTable(int windowWidth, int windowHeight)
+        private void MakingTable(int windowWidth)
         {
             var countOfIter = (36 / (windowWidth / 200)) * 2 + (windowWidth / 200) + 2;
 
@@ -148,6 +149,30 @@ namespace Pokerrr
             }
         }
 
+        private void CreatingStepLayout(int windowWidth)
+        {
+            Label stepTitle = new Label();
+            stepTitle.Text = "Enter player's requests";
+            stepTitle.Width = 200;
+            stepTitle.Location = new Point(windowWidth + 150, 10);
+            this.Controls.Add(stepTitle);
+
+            for (var i = 0; i < windowWidth / 200; i++)
+            {
+                TextBox requests = new TextBox();
+                requests.Location = new Point(windowWidth + 150, i * 30 + 40);
+                requests.Width = 50;
+                this.Controls.Add(requests);
+
+                CheckBox dark = new CheckBox();
+                dark.Text = "To dark or not to dark";
+                dark.Width = 300;
+                dark.Location = new Point(windowWidth + 210, i * 30 + 40);
+                darkCheck.Add(dark);
+                this.Controls.Add(dark);
+            }
+        }
+
         private void StepButton_Click(object sender, EventArgs e)
         {
             
@@ -156,7 +181,8 @@ namespace Pokerrr
 
         private void PlayWindow_Load(object sender, EventArgs e)
         {
-            MakingTable(this.Width, this.Height);
+            #region layout
+            MakingTable(this.Width);
 
 
             var countOfIter = (36 / (this.Width / 200)) * 2 + (this.Width / 200) + 2;
@@ -176,12 +202,15 @@ namespace Pokerrr
 
             CreatingNames(this.Width);
             Button button_Save = new Button();
-            button_Save.Text = "Save players names";
+            button_Save.Text = "Save player's names";
             button_Save.Size = new Size(100, 50);
             button_Save.Location = new Point(this.Width + 20, 10);
             this.Controls.Add(button_Save);
 
             button_Save.Click += SaveButton_Click;
+            #endregion
+
+            CreatingStepLayout(this.Width);
 
             button_step.Click += StepButton_Click;
 
