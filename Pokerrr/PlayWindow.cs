@@ -15,6 +15,13 @@ namespace Pokerrr
         List<Label> labels = new List<Label>();
         List<TextBox> playersTextbox = new List<TextBox>();
         List<CheckBox> darkCheck = new List<CheckBox>();
+        List<TextBox> playersRequest = new List<TextBox>();
+        List<TextBox> finallyRequests = new List<TextBox>();
+        //List<int> playersScore = new List<int>();
+
+
+        private int stepNumber = 0;
+        private int playersCount = 0;
 
         public PlayWindow()
         {
@@ -29,6 +36,7 @@ namespace Pokerrr
                 textBox.Location = new Point(i * 200 + 10, 5);
                 playersTextbox.Add(textBox);
                 this.Controls.Add(textBox);
+                playersCount++;
             }
             playersTextbox[0].Location = new Point(30, 5);
         }
@@ -142,7 +150,7 @@ namespace Pokerrr
                         label.Location = new Point(i * 200 + 5, j * 30 + 5);
                     }
                     
-                    label.Text = "" + j + "" + i;
+                    //label.Text = "" + j + "" + i;
                     this.Controls.Add(label);
                     labels.Add(label);
                 }
@@ -162,6 +170,7 @@ namespace Pokerrr
                 TextBox requests = new TextBox();
                 requests.Location = new Point(windowWidth + 150, i * 30 + 40);
                 requests.Width = 50;
+                playersRequest.Add(requests);
                 this.Controls.Add(requests);
 
                 CheckBox dark = new CheckBox();
@@ -171,11 +180,75 @@ namespace Pokerrr
                 darkCheck.Add(dark);
                 this.Controls.Add(dark);
             }
+
+            Label subTitle = new Label();
+            subTitle.Text = "Count of finally request";
+            subTitle.Location = new Point(windowWidth + 150, (windowWidth / 200) * 30 + 50);
+            this.Controls.Add(subTitle);
+
+            for (int i = 0; i < windowWidth / 200; i++)
+            {
+                TextBox finRequest = new TextBox();
+                finRequest.Location = new Point(windowWidth + 150, i * 30 + 170);
+                finRequest.Width = 50;
+                finallyRequests.Add(finRequest);
+                this.Controls.Add(finRequest);
+            }
+        }
+
+        private string ScoreCounter(int iterationNum)
+        {
+            var playerReq = Convert.ToInt32(playersRequest[iterationNum].Text);
+            var dark = darkCheck[iterationNum].Checked;
+            var finReq = Convert.ToInt32(finallyRequests[iterationNum].Text);
+
+            if (dark)
+            {
+                if (playerReq == finReq)
+                {
+                    var answer = ((finReq * 10) * 2).ToString();
+                    return answer;
+                } else if (playerReq > finReq)
+                {
+                    var answer = ((finReq * 2) * 2).ToString();
+                    return answer;
+                } else if (playerReq < finReq)
+                {
+                    var answer = (-((finReq * 10) * 2)).ToString();
+                    return answer;
+                }
+                return "";
+            } else
+            {
+                if (playerReq == finReq)
+                {
+                    var answer = (finReq * 10).ToString();
+                    return answer;
+                }
+                else if (playerReq > finReq)
+                {
+                    var answer = (finReq * 2).ToString();
+                    return answer;
+                }
+                else if (playerReq < finReq)
+                {
+                    var answer = (-(finReq * 10)).ToString();
+                    return answer;
+                }
+                return "";
+            }
         }
 
         private void StepButton_Click(object sender, EventArgs e)
         {
-            
+            var stringStep = 0;
+            var step = stepNumber;
+            for (var i = stepNumber; i < step + playersCount; i++)
+            {
+                labels[i].Text = ScoreCounter(stringStep);
+                stepNumber++;
+                stringStep++;
+            }
             
         }
 
