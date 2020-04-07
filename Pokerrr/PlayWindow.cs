@@ -17,7 +17,7 @@ namespace Pokerrr
         List<CheckBox> darkCheck = new List<CheckBox>();
         List<TextBox> playersRequest = new List<TextBox>();
         List<TextBox> finallyRequests = new List<TextBox>();
-        //List<int> playersScore = new List<int>();
+        int[] playersScore;
 
 
         private int stepNumber = 0;
@@ -39,6 +39,7 @@ namespace Pokerrr
                 playersCount++;
             }
             playersTextbox[0].Location = new Point(30, 5);
+            playersScore = new int[playersCount];
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
@@ -189,7 +190,7 @@ namespace Pokerrr
             for (int i = 0; i < windowWidth / 200; i++)
             {
                 TextBox finRequest = new TextBox();
-                finRequest.Location = new Point(windowWidth + 150, i * 30 + 170);
+                finRequest.Location = new Point(windowWidth + 150, i * 30 + 200);
                 finRequest.Width = 50;
                 finallyRequests.Add(finRequest);
                 this.Controls.Add(finRequest);
@@ -210,11 +211,11 @@ namespace Pokerrr
                     return answer;
                 } else if (playerReq > finReq)
                 {
-                    var answer = ((finReq * 2) * 2).ToString();
+                    var answer = (-(((playerReq - finReq) * 10) * 2)).ToString();
                     return answer;
                 } else if (playerReq < finReq)
                 {
-                    var answer = (-((finReq * 10) * 2)).ToString();
+                    var answer = ((finReq * 2) * 2).ToString();
                     return answer;
                 }
                 return "";
@@ -227,12 +228,12 @@ namespace Pokerrr
                 }
                 else if (playerReq > finReq)
                 {
-                    var answer = (finReq * 2).ToString();
+                    var answer = ((-(playerReq - finReq) * 10)).ToString();
                     return answer;
                 }
                 else if (playerReq < finReq)
                 {
-                    var answer = (-(finReq * 10)).ToString();
+                    var answer = (finReq * 2).ToString();
                     return answer;
                 }
                 return "";
@@ -245,7 +246,8 @@ namespace Pokerrr
             var step = stepNumber;
             for (var i = stepNumber; i < step + playersCount; i++)
             {
-                labels[i].Text = ScoreCounter(stringStep);
+                playersScore[stringStep] += Convert.ToInt32(ScoreCounter(stringStep));
+                labels[i].Text = (playersScore[stringStep]).ToString();
                 stepNumber++;
                 stringStep++;
             }
@@ -287,12 +289,9 @@ namespace Pokerrr
 
             button_step.Click += StepButton_Click;
 
+            this.WindowState = FormWindowState.Maximized;
 
 
-
-            this.Width += 180;
-            
-           
         }
 
     }
