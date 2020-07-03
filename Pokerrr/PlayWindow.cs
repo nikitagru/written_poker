@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -201,9 +202,9 @@ namespace Pokerrr
 
         private string ScoreCounter(int iterationNum)
         {
-            var playerReq = Convert.ToInt32(playersRequest[iterationNum].Text);
+            var playerReq = int.Parse(playersRequest[iterationNum].Text);
             var dark = darkCheck[iterationNum].Checked;
-            var finReq = Convert.ToInt32(finallyRequests[iterationNum].Text);
+            var finReq = int.Parse(finallyRequests[iterationNum].Text);
 
             if (dark)
             {
@@ -223,22 +224,38 @@ namespace Pokerrr
                 return "";
             } else
             {
-                if (playerReq == finReq)
+                if (playerReq == 0)
                 {
-                    var answer = (finReq * 10).ToString();
-                    return answer;
+                    if (finReq == 0)
+                    {
+                        var answer = 5;
+                        return answer.ToString();
+                    }
+                    else
+                    {
+                        var answer = (finReq * 2).ToString();
+                        return answer;
+                    }
                 }
-                else if (playerReq > finReq)
+                else
                 {
-                    var answer = ((-(playerReq - finReq) * 10)).ToString();
-                    return answer;
+                    if (playerReq == finReq)
+                    {
+                        var answer = (finReq * 10).ToString();
+                        return answer;
+                    }
+                    else if (playerReq > finReq)
+                    {
+                        var answer = ((-(playerReq - finReq) * 10)).ToString();
+                        return answer;
+                    }
+                    else if (playerReq < finReq)
+                    {
+                        var answer = (finReq * 2).ToString();
+                        return answer;
+                    }
+                    return "";
                 }
-                else if (playerReq < finReq)
-                {
-                    var answer = (finReq * 2).ToString();
-                    return answer;
-                }
-                return "";
             }
         }
 
