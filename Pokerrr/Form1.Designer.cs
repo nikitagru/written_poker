@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.textBox_numPlayers = new System.Windows.Forms.TextBox();
             this.button_Start = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -38,7 +39,7 @@
             this.textBox_numPlayers.Name = "textBox_numPlayers";
             this.textBox_numPlayers.Size = new System.Drawing.Size(200, 22);
             this.textBox_numPlayers.TabIndex = 0;
-            this.textBox_numPlayers.Text = "Enter the number of players";
+            this.textBox_numPlayers.Text = "Введите количество игроков";
             this.textBox_numPlayers.MouseEnter += new System.EventHandler(this.TextBox_numPlayers_MouseEnter);
             // 
             // button_Start
@@ -58,6 +59,7 @@
             this.ClientSize = new System.Drawing.Size(402, 237);
             this.Controls.Add(this.button_Start);
             this.Controls.Add(this.textBox_numPlayers);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";

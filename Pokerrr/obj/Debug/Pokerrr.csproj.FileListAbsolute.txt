@@ -1,7 +1,6 @@
 E:\С#_Projects\Pokerrr\Pokerrr\bin\Debug\Pokerrr.exe.config
 E:\С#_Projects\Pokerrr\Pokerrr\bin\Debug\Pokerrr.exe
 E:\С#_Projects\Pokerrr\Pokerrr\bin\Debug\Pokerrr.pdb
-E:\С#_Projects\Pokerrr\Pokerrr\obj\Debug\Pokerrr.csprojAssemblyReference.cache
 E:\С#_Projects\Pokerrr\Pokerrr\obj\Debug\Pokerrr.Form1.resources
 E:\С#_Projects\Pokerrr\Pokerrr\obj\Debug\Pokerrr.Properties.Resources.resources
 E:\С#_Projects\Pokerrr\Pokerrr\obj\Debug\Pokerrr.csproj.GenerateResource.cache
@@ -9,3 +8,4 @@ E:\С#_Projects\Pokerrr\Pokerrr\obj\Debug\Pokerrr.csproj.CoreCompileInputs.cache
 E:\С#_Projects\Pokerrr\Pokerrr\obj\Debug\Pokerrr.exe
 E:\С#_Projects\Pokerrr\Pokerrr\obj\Debug\Pokerrr.pdb
 E:\С#_Projects\Pokerrr\Pokerrr\obj\Debug\Pokerrr.PlayWindow.resources
+E:\С#_Projects\Pokerrr\Pokerrr\obj\Debug\Pokerrr.csprojAssemblyReference.cache

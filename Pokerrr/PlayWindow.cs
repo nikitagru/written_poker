@@ -96,7 +96,8 @@ namespace Pokerrr
             for (var j = 0; j < maxCards; j++)
             {
                 Label label = new Label();
-                label.Text = "" + j;
+                if (j == 0) label.Text = "";
+                else label.Text = "" + j;
                 label.Location = new Point(1, j * 30 + 5);
                 label.Width = 19;
                 this.Controls.Add(label);
@@ -161,36 +162,37 @@ namespace Pokerrr
         private void CreatingStepLayout(int windowWidth)
         {
             Label stepTitle = new Label();
-            stepTitle.Text = "Enter player's requests";
-            stepTitle.Width = 200;
+            stepTitle.Text = "Введите количество запрашиваемых взяток";
+            stepTitle.Width = 300;
             stepTitle.Location = new Point(windowWidth + 150, 10);
             this.Controls.Add(stepTitle);
 
-            for (var i = 0; i < windowWidth / 200; i++)
+            for (var i = 1; i <= windowWidth / 200; i++)
             {
                 TextBox requests = new TextBox();
-                requests.Location = new Point(windowWidth + 150, i * 30 + 40);
+                requests.Location = new Point(stepTitle.Location.X, stepTitle.Location.Y + 30 * i);
                 requests.Width = 50;
                 playersRequest.Add(requests);
                 this.Controls.Add(requests);
 
                 CheckBox dark = new CheckBox();
-                dark.Text = "To dark or not to dark";
+                dark.Text = "Темная";
                 dark.Width = 300;
-                dark.Location = new Point(windowWidth + 210, i * 30 + 40);
+                dark.Location = new Point(stepTitle.Location.X + requests.Width + 10, stepTitle.Location.Y + 30 * i);
                 darkCheck.Add(dark);
                 this.Controls.Add(dark);
             }
 
             Label subTitle = new Label();
-            subTitle.Text = "Count of finally request";
-            subTitle.Location = new Point(windowWidth + 150, (windowWidth / 200) * 30 + 50);
+            subTitle.Text = "Количество итоговых взяток";
+            subTitle.Width = 300;
+            subTitle.Location = new Point(stepTitle.Location.X, windowWidth / 200 * 50 + 20 );
             this.Controls.Add(subTitle);
 
-            for (int i = 0; i < windowWidth / 200; i++)
+            for (int i = 1; i <= windowWidth / 200; i++)
             {
                 TextBox finRequest = new TextBox();
-                finRequest.Location = new Point(windowWidth + 150, i * 30 + 200);
+                finRequest.Location = new Point(subTitle.Location.X, subTitle.Location.Y + 30 * i);
                 finRequest.Width = 50;
                 finallyRequests.Add(finRequest);
                 this.Controls.Add(finRequest);
@@ -268,7 +270,7 @@ namespace Pokerrr
             this.Controls.Add(stepColumn);
 
             Button button_step = new Button();
-            button_step.Text = "Next step";
+            button_step.Text = "Посчитать";
             button_step.Size = new Size(100, 30);
             button_step.Location = new Point(this.Width + 20, 80);
             this.Controls.Add(button_step);
@@ -277,7 +279,7 @@ namespace Pokerrr
 
             CreatingNames(this.Width);
             Button button_Save = new Button();
-            button_Save.Text = "Save player's names";
+            button_Save.Text = "Сохранить имена игроков";
             button_Save.Size = new Size(100, 50);
             button_Save.Location = new Point(this.Width + 20, 10);
             this.Controls.Add(button_Save);
